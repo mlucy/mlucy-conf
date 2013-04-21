@@ -1,6 +1,6 @@
 (set-prefix-key (kbd "C-z"))
-(define-key *root-map* (kbd "C-c") "exec /usr/bin/xfce4-terminal")
-(define-key *root-map* (kbd "c") "exec /usr/bin/xfce4-terminal")
+(define-key *root-map* (kbd "C-c") "exec /usr/bin/xterm")
+(define-key *root-map* (kbd "c") "exec /usr/bin/xterm")
 
 (setf *mouse-focus-policy* :click)
 
@@ -8,3 +8,5 @@
       (list '(:eval (run-shell-command "~mlucy/bin/modeline.sh" t))))
 (toggle-mode-line (current-screen) (current-head))
 
+(setf *window-border-style* :thin)
+(set-normal-gravity :center)
