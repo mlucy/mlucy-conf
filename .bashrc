@@ -1,4 +1,5 @@
 export TERM=xterm-256color
+export LANG=C
 
 shopt -s histappend
 shopt -s cmdhist
