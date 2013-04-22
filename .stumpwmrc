@@ -1,6 +1,8 @@
 (set-prefix-key (kbd "C-z"))
 (define-key *root-map* (kbd "C-c") "exec /usr/bin/xterm")
 (define-key *root-map* (kbd "c") "exec /usr/bin/xterm")
+(define-key *root-map* (kbd "M-o") "gnext")
+(define-key *root-map* (kbd "C-M-o") "gnext-with-window")
 
 (setf *mouse-focus-policy* :click)
 

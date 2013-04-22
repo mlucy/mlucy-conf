@@ -44,3 +44,6 @@ xterm*metaSendsEscape: true
 
 ! laptops have tiny pixels
 xterm*internalBorder: 5
+
+! cant get the bell to work
+xterm*visualBell: true
