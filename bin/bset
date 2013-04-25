@@ -1,12 +1,15 @@
 #!/bin/bash
 b=/sys/class/backlight/acpi_video0/brightness
+mb=/sys/class/backlight/acpi_video0/max_brightness
 if [[ "$1" == "" ]]; then
     :
-elif [[ "$1" == "up" ]]; then
+elif [[ "$1" == "up" || "$1" == "+" ]]; then
     echo $((`cat $b`+1)) > $b
-elif [[ "$1" == "down" ]]; then
+elif [[ "$1" == "down" || "$1" == "-" ]]; then
     echo $((`cat $b`-1)) > $b
+elif [[ "$1" == "max" ]]; then
+    cat $mb > $b
 else
     echo "$1" > $b
 fi
-cat $b
+echo `cat $b`/`cat $mb`
