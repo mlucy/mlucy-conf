@@ -1,2 +1,5 @@
 #!/bin/bash
-printf "%s | %s" "`date`" "`acpi -b`"
+printf "%s | Brightness: <%s/15> | %s" \
+    "`date`" \
+    "`cat /sys/class/backlight/acpi_video0/brightness`" \
+    "`acpi -b`"
