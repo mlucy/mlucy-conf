@@ -12,3 +12,7 @@
 
 (setf *window-border-style* :thin)
 (set-normal-gravity :center)
+
+(define-key *top-map* (kbd "XF86AudioMute") "exec ~/bin/vset mute-toggle")
+(define-key *top-map* (kbd "XF86AudioLowerVolume") "exec ~/bin/vset down")
+(define-key *top-map* (kbd "XF86AudioRaiseVolume") "exec ~/bin/vset up")
