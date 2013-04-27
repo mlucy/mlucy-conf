@@ -1,0 +1,2 @@
+include ".gtkrc-xfce"
+gtk-key-theme-name = "Emacs"
