@@ -1,4 +1,5 @@
 (set-prefix-key (kbd "C-z"))
+(define-key *root-map* (kbd "C-r") "loadrc")
 (define-key *root-map* (kbd "C-c") "exec /usr/bin/xterm")
 (define-key *root-map* (kbd "c") "exec /usr/bin/xterm")
 (define-key *root-map* (kbd "M-o") "gnext")
@@ -13,6 +14,14 @@
 (setf *window-border-style* :thin)
 (set-normal-gravity :center)
 
-(define-key *top-map* (kbd "XF86AudioMute") "exec ~/bin/vset mute-toggle")
-(define-key *top-map* (kbd "XF86AudioLowerVolume") "exec ~/bin/vset down")
-(define-key *top-map* (kbd "XF86AudioRaiseVolume") "exec ~/bin/vset up")
+(defcommand vset (arg)
+  ((:string "ARG"))
+  "VSET"
+  (progn
+    (run-shell-command (concatenate 'string "vset " arg))
+    (stumpwm::update-all-mode-lines)))
+
+;; (define-key *top-map* (kbd "XF86AudioMute") "exec ~/bin/vset mute-toggle")
+(define-key *top-map* (kbd "XF86AudioMute") "vset mute-toggle")
+(define-key *top-map* (kbd "XF86AudioLowerVolume") "vset down")
+(define-key *top-map* (kbd "XF86AudioRaiseVolume") "vset up")
