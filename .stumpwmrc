@@ -26,10 +26,19 @@
   (progn
     (run-shell-command (concatenate 'string "bset " arg))
     (stumpwm::update-all-mode-lines)))
+(defcommand tempset (arg)
+  ((:string "ARG"))
+  "TEMPSET"
+  (progn
+    (run-shell-command (concatenate 'string "temp.sh " arg))
+    (stumpwm::update-all-mode-lines)))
 
 ;; (define-key *top-map* (kbd "XF86AudioMute") "exec ~/bin/vset mute-toggle")
 (define-key *top-map* (kbd "XF86AudioMute") "vset mute-toggle")
 (define-key *top-map* (kbd "XF86AudioLowerVolume") "vset down")
 (define-key *top-map* (kbd "XF86AudioRaiseVolume") "vset up")
+
+(define-key *top-map* (kbd "M-XF86AudioLowerVolume") "tempset red")
+(define-key *top-map* (kbd "M-XF86AudioRaiseVolume") "tempset blue")
 
 (define-key *top-map* (kbd "Print") "exec screenshot.sh")
