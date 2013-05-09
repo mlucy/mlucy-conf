@@ -1,5 +1,6 @@
 export TERM=xterm-256color
 export LANG=C
+export PATH=~/bin:$PATH
 
 shopt -s histappend
 shopt -s cmdhist
