@@ -47,3 +47,5 @@ xterm*internalBorder: 5
 
 ! cant get the bell to work
 xterm*visualBell: true
+
+xterm*allowSendEvents: true
