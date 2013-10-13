@@ -4,6 +4,7 @@ pm-suspend-hybrid
 mkdir usb; mount -t ntfs -o uid=mlucy,gid=mlucy /dev/sdb1 usb
 echo 15 > /sys/class/backlight/acpi_video0/brightness # 0-15
 xrandr -q
+xrandr --output LVDS --auto --output VGA --auto --same-as LVDS
 xrandr --output LVDS --auto --output VGA --auto --right-of LVDS
 xrandr --output VGA --off
 
