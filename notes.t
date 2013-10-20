@@ -14,3 +14,6 @@ qpaeq, pavucontrol (add sink)
 sudo add-apt-repository ppa:nilarimogard/webupd8
 sudo apt-get update
 sudo apt-get install pulseaudio-equalizer
+
+/etc/acpi/screenblank.sh
+/etc/UPower/UPower.conf
