@@ -1,3 +1,4 @@
+. ~/.bashrc_default
 export TERM=xterm-256color
 export LANG=C
 export PATH=~/bin:$PATH

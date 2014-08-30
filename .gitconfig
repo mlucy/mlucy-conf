@@ -28,6 +28,7 @@
   st = status
   ci = commit
   br = branch
+  cb = rev-parse --abbrev-ref HEAD
   co = checkout
   df = diff
   lg = log -p
