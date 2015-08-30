@@ -1,8 +1,11 @@
 [core]
-	pager = cat
-	editor = ect
+  pager = cat
+  editor = cat
+[pull]
+  commit = yes
 [merge]
-	conflictstyle = diff3
+  commit = yes
+  conflictstyle = diff3
 [color]
   ui = auto
 [color "branch"]
@@ -21,8 +24,8 @@
   untracked = cyan
 
 [user]
-	name = Michael Lucy
-	email = mlucy@rethinkdb.com
+  name = Michael Lucy
+  email = mlucy@rethinkdb.com
 
 [alias]
   st = status
@@ -31,9 +34,13 @@
   cb = rev-parse --abbrev-ref HEAD
   co = checkout
   df = diff
+  ds = diff --stat
   lg = log -p
   lol = log --graph --decorate --pretty=oneline --abbrev-commit
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
   ls = ls-files
+
 [diff]
-	algorithm = patience
+  algorithm = patience
+[push]
+  default = simple
