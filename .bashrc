@@ -10,3 +10,6 @@ HISTSIZE=1000000
 HISTCONTROL=ignoreboth
 HISTTIMEFORMAT='%F %T '
 PROMPT_COMMAND='history -a'
+
+export NVM_DIR="/home/mlucy/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
