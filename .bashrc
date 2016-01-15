@@ -1,7 +1,7 @@
 . ~/.bashrc_default
 export TERM=xterm-256color
-export LANG=C
-export PATH=~/bin:$PATH
+export LANG=en_US.UTF-8
+export PATH=~/bin:~/go/bin:$PATH
 
 shopt -s histappend
 shopt -s cmdhist

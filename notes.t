@@ -1,19 +1,40 @@
-parallel, inotifywait
+RethinkDB TODO:
+* Look into segfault building `next` in release mode with g++ on fusion server.
 
-pm-suspend-hybrid
-mkdir usb; mount -t ntfs -o uid=mlucy,gid=mlucy /dev/sdb1 usb
-echo 15 > /sys/class/backlight/acpi_video0/brightness # 0-15
-xrandr -q
-xrandr --output LVDS --auto --output VGA --auto --same-as LVDS
-xrandr --output LVDS --auto --output VGA --auto --right-of LVDS
-xrandr --output VGA --off
+Fusion TODO:
+* Backups.
 
-http://www.webupd8.org/2013/03/install-pulseaudio-with-built-in-system.html
-https://wiki.archlinux.org/index.php/PulseAudio
-qpaeq, pavucontrol (add sink)
-sudo add-apt-repository ppa:nilarimogard/webupd8
-sudo apt-get update
-sudo apt-get install pulseaudio-equalizer
+TODO:
+* Automatically set GOPATH in eshell.
+export GO15VENDOREXPERIMENT=1
+export GOPATH=/home/mlucy/go
 
-/etc/acpi/screenblank.sh
-/etc/UPower/UPower.conf
+Emacs:
+* Make goimports run before saving.
+* Make tab-width be 2 in go files `(setq tab-width 2)`.
+* Load go mode automatically for `.go` files.
+* Auto install go-mode if not present.
+* (setq gofmt-command "goimports")
+* (add-hook 'before-save-hook 'gofmt-before-save)
+* Make the above not edit history.
+* subword-mode
+
+(setq tab-width 2)
+(setq gofmt-command "goimports")
+(add-hook 'before-save-hook 'gofmt-before-save)
+(subword-mode)
+
+Commands:
+go get -u -v github.com/aws/aws-sdk-go/...
+
+---
+
+Monitoring.
+
+---
+
+Using `runit` package.
+  - runsv (supervisor)
+  - /etc/services/rethinkdb (`mv` in)
+  - `sv` command to interact, check status, etc. (`sv status rethinkdb`)
+  - Can touch /etc/services/rethinkdb/down to mark service as normally down
