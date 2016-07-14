@@ -1,3 +1,42 @@
+Horizon Flow Notes:
+* Running npm install in toplevel directory fails in a weird way.
+* README doesn't make it clear that installation instructions are for
+  npm package rather than source.
+
+* Make `--connect` should set `start_rethindb` to false.
+
+---
+
+export npm_config_prefix=/home/mlucy/local/npm-modules
+cd client
+npm install
+cd ../server
+npm link ../client
+npm install
+cd ../cli
+npm link ../server
+npm install
+cd ..
+node cli/src/main.js init mtest
+cd mtest
+
+cd client
+npm install
+cd ../server
+sudo npm link ../client
+sudo chown -R mlucy:mlucy node_modules
+npm install
+cd ../cli
+sudo npm link ../server
+sudo chown -R mlucy:mlucy node_modules
+npm install
+cd ..
+node cli/src/main.js init mtest
+cd mtest
+
+
+---
+
 RethinkDB TODO:
 * Look into segfault building `next` in release mode with g++ on fusion server.
 
@@ -26,6 +65,7 @@ Emacs:
 
 Commands:
 go get -u -v github.com/aws/aws-sdk-go/...
+netstat -tlnp
 
 ---
 

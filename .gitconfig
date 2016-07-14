@@ -29,6 +29,7 @@
 
 [alias]
   st = status
+  s = status --short
   ci = commit
   br = branch
   cb = rev-parse --abbrev-ref HEAD
@@ -38,6 +39,7 @@
   lg = log -p
   lol = log --graph --decorate --pretty=oneline --abbrev-commit
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+  ack = log -p -S
   ls = ls-files
   mrb = for-each-ref --sort=committerdate refs/heads/
 
