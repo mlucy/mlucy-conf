@@ -11,8 +11,8 @@ HISTCONTROL=ignoreboth
 HISTTIMEFORMAT='%F %T '
 PROMPT_COMMAND='history -a'
 
-export NVM_DIR="/home/mlucy/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+# export NVM_DIR="/home/mlucy/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # The next line updates PATH for the Google Cloud SDK.
 source '/home/mlucy/google-cloud-sdk/path.bash.inc'
