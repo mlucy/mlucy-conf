@@ -25,7 +25,7 @@
 
 [user]
   name = Michael Lucy
-  email = mlucy@rethinkdb.com
+  email = mlucy@stripe.com
 
 [alias]
   st = status
@@ -47,3 +47,16 @@
   algorithm = patience
 [push]
   default = simple
+# Please indent options with one tab when editing defaults in
+# https://github.com/stripe-internal/marionette-puppet-config/blob/master/modules/git/templates/gitconfig.erb
+# That matches how "git config --global" edits the file.
+[push]
+  default = simple
+
+[url "git@github.com:"]
+  insteadOf = https://github.com/
+
+# http://stackoverflow.com/questions/18257622/why-is-git-core-preloadindex-default-value-false
+[core]
+  preloadindex = true
+
