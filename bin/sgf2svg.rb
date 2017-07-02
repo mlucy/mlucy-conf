@@ -19,7 +19,10 @@ end
 
 def xlabel(x)
 <<EOF
-<text x="#{x*$spacing + $buffer - $letterwidth/2.0}" y="#{$letterheight*1.5}">
+<text
+  x="#{x*$spacing + $buffer - $letterwidth/2.0}" y="#{$letterheight + 8}"
+  font-family="sans-serif" fill="#665544"
+>
   #{(x+'A'.ord).chr}
 </text>
 EOF
@@ -27,9 +30,29 @@ end
 
 def ylabel(y)
 <<EOF
-<text x="10" y="#{y*$spacing + $buffer + $letterheight/2.0 - 4}">
+<text
+  x="8" y="#{y*$spacing + $buffer + $letterheight/2.0 - 4}"
+  font-family="sans-serif" fill="#665544"
+>
   #{19-y}
 </text>
+EOF
+end
+
+def preamble
+  <<EOF
+<defs>
+  <radialGradient id="bg" fx="0.3" fy="0.3">
+    <stop offset="0%" stop-color="#777777"></stop>
+    <stop offset="30%" stop-color="#444444"></stop>
+    <stop offset="100%" stop-color="#111111"></stop>
+  </radialGradient>
+  <radialGradient id="wg" fx="0.49" fy="0.56">
+    <stop offset="70%" stop-color="#ffffff"></stop>
+    <stop offset="95%" stop-color="#cccccc"></stop>
+    <stop offset="100%" stop-color="#999999"></stop>
+  </radialGradient>
+</defs>
 EOF
 end
 
@@ -37,21 +60,19 @@ def fancy_stone(x, y, color)
   magic = 0.5
   if color == 'black'
   <<EOF
-<defs>
-  <radialGradient id="75r_0.3__0.3__777-_444:30-_111" fx="0.3" fy="0.3" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><stop offset="0%" stop-color="#777777" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></stop><stop offset="30%" stop-color="#444444" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></stop><stop offset="100%" stop-color="#111111" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></stop></radialGradient>
-</defs>
 <circle cx="#{x*$spacing + $buffer}" cy="#{y*$spacing+$buffer}"
         r="#{$spacing*magic}"
-fill="url(#75r_0.3__0.3__777-_444:30-_111)" stroke="#888888" opacity="1" fill-opacity="1" stroke-opacity="0.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 1; fill-opacity: 1; stroke-opacity: 0.5;"></circle>
+        fill="url(#bg)" stroke="#888888"
+        opacity="1" fill-opacity="1" stroke-opacity="0.5">
+</circle>
 EOF
   elsif color == 'white'
 <<EOF
-<defs>
-  <radialGradient id="72r_0.49__0.56__FFF:70-_ccc:95-_999" fx="0.49" fy="0.56" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><stop offset="70%" stop-color="#ffffff" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></stop><stop offset="95%" stop-color="#cccccc" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></stop><stop offset="100%" stop-color="#999999" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></stop></radialGradient>
-</defs>
 <circle cx="#{x*$spacing + $buffer}" cy="#{y*$spacing+$buffer}"
         r="#{$spacing*magic}"
-        fill="url(#72r_0.49__0.56__FFF:70-_ccc:95-_999)" stroke="#888888" opacity="1" fill-opacity="1" stroke-opacity="0.5" id="board-container-1498984863340-stone-4-14" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 1; fill-opacity: 1; stroke-opacity: 0.5;"></circle>
+        fill="url(#wg)" stroke="#888888"
+        opacity="1" fill-opacity="1" stroke-opacity="0.5">
+</circle>
 EOF
   else
     raise RuntimeError("bad color: #{color}")
@@ -66,8 +87,7 @@ def small_square(x, y)
   width="#{$spacing/6.0}"
   height="#{$spacing/6.0}"
   r="0" rx="0" ry="0"
-  fill="black" stroke="black"
-  style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+  fill="black" stroke="black">
 </rect>
 EOF
 end
@@ -119,9 +139,10 @@ def draw_puzzle(sgf)
   title = puzzle[:title]
   puts '<?xml version="1.0" encoding="UTF-8" ?>'
   puts '<svg xmlns="http://www.w3.org/2000/svg" version="1.1">'
-  max_x = stones.map{|s| s[:x]}.max
-  max_y = stones.map{|s| s[:y]}.max
-  draw_board(max_x + 2, max_y + 2)
+  puts preamble
+  max_x = stones.map{|s| s[:x]}.max + 2
+  max_y = stones.map{|s| s[:y]}.max + 2
+  draw_board(max_x, max_y)
   (0...max_x).each {|x|
     puts xlabel(x)
   }
