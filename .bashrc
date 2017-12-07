@@ -12,5 +12,8 @@ HISTTIMEFORMAT='%F %T '
 PROMPT_COMMAND='history -a'
 
 export PATH=/usr/local/bin:$PATH
-. /Users/mlucy/.rbenvrc
-. ~/.stripe-repos.sh
+# . /Users/mlucy/.rbenvrc
+# . ~/.stripe-repos.sh
+
+# added by Anaconda3 installer
+export PATH="/home/mlucy/anaconda3/bin:$PATH"
