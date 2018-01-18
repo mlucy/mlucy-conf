@@ -12,6 +12,8 @@ HISTTIMEFORMAT='%F %T '
 PROMPT_COMMAND='history -a'
 
 export PATH=/usr/local/bin:$PATH
+# added by Anaconda3 installer
+export PATH="/home/mlucy/anaconda3/bin:$PATH"
 export PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 
 # added by Anaconda3 installer
