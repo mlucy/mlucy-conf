@@ -13,3 +13,9 @@ PROMPT_COMMAND='history -a'
 
 export PATH=/usr/local/bin:$PATH
 export PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+
+# added by Anaconda3 installer
+# export PATH="$CUDA_HOME/bin:/home/mlucy/anaconda3/bin:$PATH"
+export CUDA_HOME=/usr/local/cuda-8.0
+export PATH="$CUDA_HOME/bin:$PATH"
+export LD_LIBRARY_PATH="$CUDA_HOME/lib64:$LD_LIBRARY_PATH"
