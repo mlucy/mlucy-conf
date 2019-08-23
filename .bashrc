@@ -19,5 +19,8 @@ export PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\
 # added by Anaconda3 installer
 # export PATH="$CUDA_HOME/bin:/home/mlucy/anaconda3/bin:$PATH"
 export CUDA_HOME=/usr/local/cuda-8.0
-export PATH="$CUDA_HOME/bin:$PATH"
+export PATH="$CUDA_HOME/bin:~/ve/proxy/bin:$PATH"
 export LD_LIBRARY_PATH="$CUDA_HOME/lib64:$LD_LIBRARY_PATH"
+source <(k completion bash | sed 's/__start_kubectl kubectl/__start_kubectl k/')
+
+export GOOGLE_APPLICATION_CREDENTIALS=/home/mlucy/dbox/leadgenie-code/scraper/credentials/basilica-9bee2d05a57e.json

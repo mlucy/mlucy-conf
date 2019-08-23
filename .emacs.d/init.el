@@ -154,12 +154,15 @@
   (face-nar))
 
 (defface hi-lines2 '((t (:foreground "#ff0000" :background "#000000"))) "1")
+;; (defun face-lines ()
+;;   (interactive)
+;;   (hi-lock-face-buffer "[a-z_.]+:[0-9]+" "hi-lines2"))
 (defun face-lines ()
   (interactive)
-  (hi-lock-face-buffer "[a-z_.]+:[0-9]+" "hi-lines2"))
+  (hi-lock-face-buffer "[a-z_.]+\", line [0-9]+" "hi-lines2"))
 (defun unface-lines ()
   (interactive)
-  (hi-lock-unface-buffer "[a-z_.]+:[0-9]+"))
+  (hi-lock-unface-buffer "[a-z_.]+\", line [0-9]+"))
 (defun lines-refresh ()
   (interactive)
   (unface-lines)
@@ -318,3 +321,8 @@
   '(progn
      (require 'outline-magic)
      (define-key outline-minor-mode-map (kbd "C-c C-c") 'outline-cycle)))
+
+(setq python-shell-enable-font-lock nil)
+
+(setq python-shell-interpreter "ipython"
+      python-shell-interpreter-args "--simple-prompt -i")
