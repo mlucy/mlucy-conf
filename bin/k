@@ -1,0 +1,3 @@
+#!/bin/bash
+kubectl "$@"
+# k --namespace=prod --context gke_basilica-211201_us-central1-c_basilica get hpa

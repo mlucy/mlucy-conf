@@ -1,0 +1,13 @@
+#!/bin/bash
+set -eu
+
+CMD=${CMD:-k}
+TAIL=${TAIL:-10}
+EXTRA=${EXTRA:-}
+
+pods=`$CMD get pods | grep Running | grep -E "$1" | awk '{print $1}'`
+for pod in $pods; do
+    $CMD logs $pod --tail=$TAIL -f $EXTRA &
+done
+
+wait
