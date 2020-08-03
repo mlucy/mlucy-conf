@@ -1,3 +1,4 @@
+(setq initial-buffer-choice "~/.emacs.d/splash.t")
 (menu-bar-mode -1)
 (global-set-key "\M-n" 'forward-paragraph)
 (global-set-key "\M-p" 'backward-paragraph)
