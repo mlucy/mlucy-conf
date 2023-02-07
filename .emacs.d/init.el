@@ -99,7 +99,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (dumb-jump projectile go-mode cider)))
+ '(package-selected-packages (quote (dumb-jump projectile)))
  '(vc-follow-symlinks nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -119,7 +119,7 @@
 
 (add-to-list 'load-path "~/.emacs.d/packages")
 ;;(load "c-eldoc")
-(load "ascope")
+;; (load "ascope")
 (load "markdown-mode")
 
 (load "inf-ruby")
@@ -259,7 +259,7 @@
 (defun eshell-handle-ansi-color ()
   (ansi-color-apply-on-region eshell-last-output-start
                               eshell-last-output-end))
-(add-to-list 'eshell-output-filter-functions 'eshell-handle-ansi-color)
+;; (add-to-list 'eshell-output-filter-functions 'eshell-handle-ansi-color)
 (setq c-macro-preprocessor "/usr/bin/g++ -C")
 (setq c-macro-cppflags "-I/home/mlucy/rethinkdb/src -I/home/mlucy/rethinkdb/build/debug/proto --std=gnu++0x -pthread")
 
@@ -268,17 +268,22 @@
  '(((lambda (a b) t) . ((display-buffer-reuse-window
                          display-buffer-use-some-window)))))
 
-(setq compile-command
-      "bash -c 'rm ~/.distcc/lock/backoff*; make -C ~/rethinkdb/src DEBUG=1 -j128'")
 (global-auto-revert-mode 1)
 
+;; (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 (require 'package)
+;; (add-to-list
+;;  'package-archives
+;; '("melpa-stable" . "https://melpa-stable.milkbox.net/packages/"))
 (add-to-list
  'package-archives
- '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/"))
+ '("melpa" . "https://raw.githubusercontent.com/d12frosted/elpa-mirror/master/melpa/"))
+ ;;'("melpa" . "https://melpa.milkbox.net/packages/"))
 (package-initialize)
+;; IF BROKEN:
+;; (package-refresh-contents)
 
-(setq my-packages '(projectile clojure-mode cider go-mode dumb-jump))
+(setq my-packages '(projectile go-mode dumb-jump))
 (dolist (p my-packages)
   (unless (package-installed-p p)
     (package-install p)))
@@ -308,16 +313,16 @@
 (global-set-key (kbd "M-;") 'dumb-jump-go-other-window)
 (global-set-key (kbd "C-M-q") 'dumb-jump-quick-look)
 
-(menu-bar-mode -1)
-(toggle-scroll-bar -1)
-(tool-bar-mode -1)
-(if window-system
-    (progn
-      (load-theme 'dracula)
-      (set-background-color "black")
-      (set-face-attribute 'fringe nil
-                          :foreground (face-foreground 'default)
-                          :background (face-background 'default))))
+;; (menu-bar-mode -1)
+;; (toggle-scroll-bar -1)
+;; (tool-bar-mode -1)
+;; (if window-system
+;;     (progn
+;;       (load-theme 'dracula)
+;;       (set-background-color "black")
+;;       (set-face-attribute 'fringe nil
+;;                           :foreground (face-foreground 'default)
+;;                           :background (face-background 'default))))
 
 (eval-after-load 'outline
   '(progn
